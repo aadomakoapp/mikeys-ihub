@@ -1,86 +1,102 @@
-import { useEffect, useState } from "react";
-import { MessageCircle, Menu, X } from "lucide-react";
+import { useState } from "react";
+import { MessageCircle, Menu, X, Search, MapPin } from "lucide-react";
 import { Logo } from "./Logo";
 import { Button } from "./ui/button";
 
 const links = [
-  { href: "#products", label: "Products" },
-  { href: "#featured", label: "Featured" },
-  { href: "#why-us", label: "Why Us" },
-  { href: "#visit", label: "Visit" },
+  { href: "#products", label: "Shop" },
+  { href: "#featured", label: "iPhones" },
+  { href: "#how-it-works", label: "How it works" },
+  { href: "#visit", label: "Contact" },
 ];
 
 const WHATSAPP = "https://wa.me/233560965636";
 
 export const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
-    onScroll();
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? "py-3" : "py-5"
-      }`}
-    >
+    <header className="sticky top-0 inset-x-0 z-50 bg-background border-b border-border">
       <div className="container">
-        <nav
-          className={`flex items-center justify-between rounded-full px-4 md:px-6 py-2.5 transition-all duration-300 ${
-            scrolled ? "glass shadow-card-elevated" : "bg-transparent"
-          }`}
-        >
-          <Logo />
-          <ul className="hidden md:flex items-center gap-8">
-            {links.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <div className="hidden md:block">
-            <Button variant="hero" size="default" asChild className="rounded-full">
+        <div className="flex items-center justify-between h-16 gap-6">
+          <div className="flex items-center gap-8">
+            <Logo />
+            <nav className="hidden md:block">
+              <ul className="flex items-center gap-6">
+                {links.map((l) => (
+                  <li key={l.href}>
+                    <a
+                      href={l.href}
+                      className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+
+          <div className="hidden md:flex flex-1 max-w-md">
+            <div className="relative w-full">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <input
+                type="search"
+                placeholder="Search iPhone, MacBook, AirPods…"
+                className="w-full h-10 pl-10 pr-4 rounded-md surface border border-border text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent placeholder:text-muted-foreground"
+              />
+            </div>
+          </div>
+
+          <div className="hidden md:flex items-center gap-2">
+            <a
+              href="#visit"
+              className="hidden lg:flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <MapPin className="h-3.5 w-3.5" />
+              Adum, Melcom
+            </a>
+            <Button variant="whatsapp" size="default" asChild>
               <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="h-4 w-4" />
-                Chat on WhatsApp
+                WhatsApp
               </a>
             </Button>
           </div>
+
           <button
-            className="md:hidden text-foreground p-2"
+            className="md:hidden p-2 -mr-2"
             onClick={() => setOpen((o) => !o)}
             aria-label="Toggle menu"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
-        </nav>
+        </div>
 
         {open && (
-          <div className="md:hidden glass mt-2 rounded-2xl p-4 animate-fade-up">
-            <ul className="flex flex-col gap-1">
+          <div className="md:hidden py-3 border-t border-border animate-fade-up">
+            <div className="relative mb-3">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <input
+                type="search"
+                placeholder="Search products…"
+                className="w-full h-10 pl-10 pr-4 rounded-md surface border border-border text-sm"
+              />
+            </div>
+            <ul className="flex flex-col">
               {links.map((l) => (
                 <li key={l.href}>
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="block px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-white/5"
+                    className="block py-2.5 text-sm font-medium text-foreground/80 hover:text-primary"
                   >
                     {l.label}
                   </a>
                 </li>
               ))}
-              <li className="pt-2">
-                <Button variant="hero" className="w-full rounded-full" asChild>
+              <li className="pt-3">
+                <Button variant="whatsapp" className="w-full" asChild>
                   <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="h-4 w-4" />
                     Chat on WhatsApp

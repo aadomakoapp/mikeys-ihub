@@ -2,19 +2,21 @@ import { Smartphone } from "lucide-react";
 
 interface LogoProps {
   className?: string;
+  variant?: "default" | "light";
 }
 
-export const Logo = ({ className = "" }: LogoProps) => (
-  <a href="#top" className={`flex items-center gap-2 group ${className}`}>
-    <div className="relative">
-      <div className="absolute inset-0 bg-primary blur-md opacity-60 group-hover:opacity-100 transition-opacity" />
-      <div className="relative bg-gradient-red rounded-lg p-1.5 shadow-glow">
-        <Smartphone className="h-4 w-4 text-primary-foreground" strokeWidth={2.5} />
-      </div>
+export const Logo = ({ className = "", variant = "default" }: LogoProps) => (
+  <a href="#top" className={`flex items-center gap-2.5 ${className}`}>
+    <div className="bg-primary rounded-md p-1.5 flex items-center justify-center">
+      <Smartphone className="h-4 w-4 text-primary-foreground" strokeWidth={2.5} />
     </div>
     <div className="flex items-baseline gap-1 leading-none">
-      <span className="text-lg font-extrabold tracking-tight text-gradient-red">MIKEY'S</span>
-      <span className="text-xs font-bold tracking-[0.2em] text-foreground/80">iHUB</span>
+      <span className={`text-base font-extrabold tracking-tight ${variant === "light" ? "text-white" : "text-foreground"}`}>
+        Mikey's
+      </span>
+      <span className={`text-[11px] font-bold tracking-[0.18em] ${variant === "light" ? "text-white/70" : "text-muted-foreground"}`}>
+        iHUB
+      </span>
     </div>
   </a>
 );
