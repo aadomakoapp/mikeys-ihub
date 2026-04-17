@@ -67,15 +67,9 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
-      backgroundImage: {
-        'gradient-red': 'var(--gradient-red)',
-        'gradient-hero': 'var(--gradient-hero)',
-        'gradient-card': 'var(--gradient-card)',
-      },
       boxShadow: {
-        'glow': 'var(--shadow-glow)',
-        'card-elevated': 'var(--shadow-card)',
-        'elevated': 'var(--shadow-elevated)',
+        'card': 'var(--shadow-card)',
+        'card-hover': 'var(--shadow-card-hover)',
       },
       keyframes: {
         "accordion-down": {
