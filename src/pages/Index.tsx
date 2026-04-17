@@ -1,23 +1,31 @@
+import { TopBar } from "@/components/TopBar";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { TrustStrip } from "@/components/TrustStrip";
 import { Categories } from "@/components/Categories";
 import { Featured } from "@/components/Featured";
-import { WhyUs } from "@/components/WhyUs";
+import { HowItWorks } from "@/components/HowItWorks";
+import { Testimonials } from "@/components/Testimonials";
 import { Visit } from "@/components/Visit";
 import { Footer } from "@/components/Footer";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen">
+    <div className="min-h-screen bg-background">
+      <TopBar />
       <Navbar />
-      <main className="relative z-10">
+      <main>
         <Hero />
+        <TrustStrip />
         <Categories />
         <Featured />
-        <WhyUs />
+        <HowItWorks />
+        <Testimonials />
         <Visit />
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 };
