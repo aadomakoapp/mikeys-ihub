@@ -1,13 +1,5 @@
 import { ArrowRight } from "lucide-react";
-
-const categories = [
-  { name: "iPhones", count: "30+ models", emoji: "📱" },
-  { name: "iPads", count: "12 models", emoji: "📲" },
-  { name: "MacBooks", count: "8 models", emoji: "💻" },
-  { name: "Apple Watch", count: "Series 3 – Ultra", emoji: "⌚" },
-  { name: "AirPods", count: "Pro, Max, Gen 2/3", emoji: "🎧" },
-  { name: "Accessories", count: "Cases, chargers & more", emoji: "🔌" },
-];
+import { siteText, whatsappLink } from "@/content";
 
 export const Categories = () => {
   return (
@@ -21,7 +13,7 @@ export const Categories = () => {
             </p>
           </div>
           <a
-            href="https://wa.me/233560965636"
+            href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
@@ -31,7 +23,7 @@ export const Categories = () => {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
-          {categories.map((c) => (
+          {siteText.categories.map((c) => (
             <a
               key={c.name}
               href="#featured"

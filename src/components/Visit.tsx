@@ -1,7 +1,6 @@
 import { MapPin, Phone, MessageCircle, Clock, Mail } from "lucide-react";
 import { Button } from "./ui/button";
-
-const WHATSAPP = "https://wa.me/233560965636";
+import { store, whatsappLink, telLink } from "@/content";
 
 export const Visit = () => {
   return (
@@ -28,8 +27,8 @@ export const Visit = () => {
                   <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">
                     Address
                   </p>
-                  <p className="font-semibold">Adum, Melcom</p>
-                  <p className="text-sm text-muted-foreground">Kumasi, Ghana</p>
+                  <p className="font-semibold">{store.addressLine1}</p>
+                  <p className="text-sm text-muted-foreground">{store.addressLine2}</p>
                 </div>
               </li>
 
@@ -41,12 +40,15 @@ export const Visit = () => {
                   <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">
                     Call us
                   </p>
-                  <a href="tel:+233560965636" className="block font-semibold hover:text-primary transition-colors">
-                    +233 56 096 5636
-                  </a>
-                  <a href="tel:+233559631051" className="block font-semibold hover:text-primary transition-colors">
-                    +233 55 963 1051
-                  </a>
+                  {store.phones.map((phone) => (
+                    <a
+                      key={phone}
+                      href={telLink(phone)}
+                      className="block font-semibold hover:text-primary transition-colors"
+                    >
+                      {phone}
+                    </a>
+                  ))}
                 </div>
               </li>
 
@@ -58,14 +60,12 @@ export const Visit = () => {
                   <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">
                     Opening hours
                   </p>
-                  <p className="text-sm">
-                    <span className="font-semibold">Mon — Sat:</span>{" "}
-                    <span className="text-foreground/80">9:00 AM — 7:00 PM</span>
-                  </p>
-                  <p className="text-sm">
-                    <span className="font-semibold">Sunday:</span>{" "}
-                    <span className="text-foreground/80">By appointment</span>
-                  </p>
+                  {store.openingHours.map((h) => (
+                    <p key={h.days} className="text-sm">
+                      <span className="font-semibold">{h.days}:</span>{" "}
+                      <span className="text-foreground/80">{h.time}</span>
+                    </p>
+                  ))}
                 </div>
               </li>
 
@@ -77,8 +77,8 @@ export const Visit = () => {
                   <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">
                     Email
                   </p>
-                  <a href="mailto:hello@mikeysihub.com" className="font-semibold hover:text-primary transition-colors">
-                    hello@mikeysihub.com
+                  <a href={`mailto:${store.email}`} className="font-semibold hover:text-primary transition-colors">
+                    {store.email}
                   </a>
                 </div>
               </li>
@@ -86,13 +86,13 @@ export const Visit = () => {
 
             <div className="mt-7 pt-6 border-t border-border flex flex-col sm:flex-row gap-2.5">
               <Button variant="whatsapp" size="lg" className="flex-1" asChild>
-                <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
+                <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="h-4 w-4" />
                   WhatsApp
                 </a>
               </Button>
               <Button variant="outline" size="lg" className="flex-1" asChild>
-                <a href="tel:+233560965636">
+                <a href={telLink(store.phones[0])}>
                   <Phone className="h-4 w-4" />
                   Call now
                 </a>
@@ -102,8 +102,8 @@ export const Visit = () => {
 
           <div className="lg:col-span-3 rounded-xl overflow-hidden border border-border min-h-[400px] bg-secondary">
             <iframe
-              title="Mikey's iHub location — Adum, Melcom Kumasi"
-              src="https://www.google.com/maps?q=Melcom+Adum+Kumasi+Ghana&output=embed"
+              title={`${store.storeName} location — ${store.addressLine1}, ${store.addressLine2}`}
+              src={store.mapEmbedUrl}
               className="w-full h-full min-h-[400px]"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

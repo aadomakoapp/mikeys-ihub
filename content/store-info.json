@@ -1,0 +1,22 @@
+{
+  "HOW_TO_EDIT": "Contact details and store settings. Change any value on the right-hand side of the colons. Keep the quotation marks. Full instructions: see HOW-TO-UPDATE.md in the main folder.",
+  "storeName": "Mikey's iHub",
+  "tagline": "#WePrioritizeQuality",
+  "currency": "GH₵",
+  "whatsappNumber": "233560965636",
+  "phones": ["+233 56 096 5636", "+233 55 963 1051"],
+  "email": "hello@mikeysihub.com",
+  "addressLine1": "Adum, Melcom",
+  "addressLine2": "Kumasi, Ghana",
+  "openingHours": [
+    { "days": "Mon — Sat", "time": "9:00 AM — 7:00 PM" },
+    { "days": "Sunday", "time": "By appointment" }
+  ],
+  "deliveryMessage": "Free same-day delivery in Kumasi · Nationwide shipping",
+  "instagram": "https://instagram.com",
+  "facebook": "https://facebook.com",
+  "mapEmbedUrl": "https://www.google.com/maps?q=Melcom+Adum+Kumasi+Ghana&output=embed",
+  "whatsappGreeting": "Hi Mikey, I'm interested in an iPhone",
+  "whatsappQuestion": "Hi Mikey, I have a question",
+  "whatsappOrderPrefix": "Hi Mikey, I'd like to buy the "
+}

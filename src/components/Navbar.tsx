@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MessageCircle, Menu, X, Search, MapPin } from "lucide-react";
 import { Logo } from "./Logo";
 import { Button } from "./ui/button";
+import { store, whatsappLink } from "@/content";
 
 const links = [
   { href: "#products", label: "Shop" },
@@ -10,7 +11,7 @@ const links = [
   { href: "#visit", label: "Contact" },
 ];
 
-const WHATSAPP = "https://wa.me/233560965636";
+const WHATSAPP = whatsappLink();
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -54,7 +55,7 @@ export const Navbar = () => {
               className="hidden lg:flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
             >
               <MapPin className="h-3.5 w-3.5" />
-              Adum, Melcom
+              {store.addressLine1}
             </a>
             <Button variant="whatsapp" size="default" asChild>
               <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">

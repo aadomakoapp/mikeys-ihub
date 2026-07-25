@@ -1,70 +1,6 @@
 import { MessageCircle, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
-import iphoneTitanium from "@/assets/iphone-titanium.png";
-import iphoneRed from "@/assets/iphone-red.png";
-import iphoneBlue from "@/assets/iphone-blue.png";
-import ipad from "@/assets/ipad.png";
-import macbook from "@/assets/macbook.png";
-import airpods from "@/assets/airpods.png";
-
-const WHATSAPP = "https://wa.me/233560965636";
-
-const products = [
-  {
-    name: "iPhone 15 Pro Max",
-    color: "Natural Titanium",
-    storage: ["256GB", "512GB", "1TB"],
-    condition: "Brand New",
-    conditionColor: "bg-[hsl(142_71%_38%)]",
-    price: "12,500",
-    image: iphoneTitanium,
-  },
-  {
-    name: "iPhone 14 Plus",
-    color: "Product (RED)",
-    storage: ["128GB", "256GB"],
-    condition: "UK Used",
-    conditionColor: "bg-primary",
-    price: "7,200",
-    image: iphoneRed,
-  },
-  {
-    name: "iPhone 13 Pro",
-    color: "Sierra Blue",
-    storage: ["128GB", "256GB"],
-    condition: "UK Used",
-    conditionColor: "bg-primary",
-    price: "5,800",
-    image: iphoneBlue,
-  },
-  {
-    name: "iPad Air (5th Gen)",
-    color: "Space Gray",
-    storage: ["64GB", "256GB"],
-    condition: "Brand New",
-    conditionColor: "bg-[hsl(142_71%_38%)]",
-    price: "6,400",
-    image: ipad,
-  },
-  {
-    name: 'MacBook Air M2 13"',
-    color: "Silver",
-    storage: ["256GB SSD", "512GB SSD"],
-    condition: "Brand New",
-    conditionColor: "bg-[hsl(142_71%_38%)]",
-    price: "14,900",
-    image: macbook,
-  },
-  {
-    name: "AirPods (2nd Gen)",
-    color: "White",
-    storage: ["With Charging Case"],
-    condition: "Brand New",
-    conditionColor: "bg-[hsl(142_71%_38%)]",
-    price: "850",
-    image: airpods,
-  },
-];
+import { products, store, imageUrl, whatsappLink, isNewCondition } from "@/content";
 
 export const Featured = () => {
   return (
@@ -78,7 +14,7 @@ export const Featured = () => {
             <h2 className="text-2xl md:text-3xl font-bold">Currently in store</h2>
           </div>
           <a
-            href={WHATSAPP}
+            href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
@@ -95,12 +31,12 @@ export const Featured = () => {
             >
               <div className="relative aspect-square surface-2 flex items-center justify-center overflow-hidden">
                 <span
-                  className={`absolute top-3 left-3 ${p.conditionColor} text-white text-[11px] font-bold uppercase tracking-wide px-2 py-0.5 rounded`}
+                  className={`absolute top-3 left-3 ${isNewCondition(p.condition) ? "bg-[hsl(142_71%_38%)]" : "bg-primary"} text-white text-[11px] font-bold uppercase tracking-wide px-2 py-0.5 rounded`}
                 >
                   {p.condition}
                 </span>
                 <img
-                  src={p.image}
+                  src={imageUrl(p.image)}
                   alt={`${p.name} in ${p.color}`}
                   width={1024}
                   height={1024}
@@ -127,12 +63,12 @@ export const Featured = () => {
                   <div>
                     <p className="text-[11px] text-muted-foreground uppercase tracking-wide">From</p>
                     <p className="text-lg font-bold leading-tight">
-                      GH₵ {p.price}
+                      {store.currency} {p.price}
                     </p>
                   </div>
                   <Button variant="whatsapp" size="sm" asChild>
                     <a
-                      href={`${WHATSAPP}?text=Hi%20Mikey%2C%20I%27d%20like%20to%20buy%20the%20${encodeURIComponent(p.name)}`}
+                      href={whatsappLink(`${store.whatsappOrderPrefix}${p.name}`)}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -149,7 +85,7 @@ export const Featured = () => {
         <p className="text-center text-sm text-muted-foreground mt-10">
           Don't see what you're looking for?{" "}
           <a
-            href={WHATSAPP}
+            href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary font-semibold hover:underline"

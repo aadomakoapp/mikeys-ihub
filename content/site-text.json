@@ -1,0 +1,66 @@
+{
+  "HOW_TO_EDIT": "Wording shown on the website: headline, categories, customer reviews and ratings. Change any text on the right-hand side of the colons; keep the quotation marks. Full instructions: see HOW-TO-UPDATE.md in the main folder.",
+  "hero": {
+    "headlineStart": "Quality",
+    "headlineHighlight": "iDeals",
+    "headlineEnd": "on genuine Apple products.",
+    "subheadline": "Mikey's iHub is Kumasi's trusted dealer in iPhones, iPads, MacBooks, AirPods and Apple Watch — quality, durable and affordable, every time.",
+    "image": "hero-iphones.jpg"
+  },
+  "stats": {
+    "rating": "4.9",
+    "customersLine": "Trusted by 1,200+ customers across Ghana",
+    "reviewsLine": "from 320+ reviews"
+  },
+  "trustBadges": [
+    { "title": "Quality checked", "desc": "Every device tested before sale" },
+    { "title": "Fast delivery", "desc": "Same-day in Kumasi · 1–2 days nationwide" },
+    { "title": "7-day returns", "desc": "Not happy? Send it back, no stress" },
+    { "title": "Pay on delivery", "desc": "Inspect before you pay (Kumasi only)" }
+  ],
+  "categories": [
+    { "name": "iPhones", "count": "30+ models", "emoji": "📱" },
+    { "name": "iPads", "count": "12 models", "emoji": "📲" },
+    { "name": "MacBooks", "count": "8 models", "emoji": "💻" },
+    { "name": "Apple Watch", "count": "Series 3 – Ultra", "emoji": "⌚" },
+    { "name": "AirPods", "count": "Pro, Max, Gen 2/3", "emoji": "🎧" },
+    { "name": "Accessories", "count": "Cases, chargers & more", "emoji": "🔌" }
+  ],
+  "howItWorks": [
+    {
+      "title": "Browse or ask",
+      "desc": "Pick a product from our list or message us with what you're looking for. We'll confirm availability and send photos."
+    },
+    {
+      "title": "Confirm on WhatsApp",
+      "desc": "Chat with us to lock in your price, choose storage and color. We'll guide you through payment options."
+    },
+    {
+      "title": "Pickup or delivery",
+      "desc": "Visit our store at Adum, Melcom — or get same-day delivery in Kumasi (and 1–2 days nationwide)."
+    },
+    {
+      "title": "Inspect & enjoy",
+      "desc": "Test your device on the spot. Every Mikey's iHub purchase comes with a 7-day return policy."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Kwame A.",
+      "location": "Kumasi",
+      "text": "Bought my iPhone 14 Pro from Mikey and it's been flawless for 8 months. The phone was exactly as described and delivery was same-day. Will definitely buy from them again."
+    },
+    {
+      "name": "Adwoa M.",
+      "location": "Accra",
+      "text": "I was nervous buying online but they sent me video calls of the actual MacBook before I paid. Came in 2 days, perfectly packaged. Genuine sellers."
+    },
+    {
+      "name": "Yaw O.",
+      "location": "Takoradi",
+      "text": "The AirPods Pro I got from Mikey's iHub are 100% original. Better price than the mall and they even gave me a free case. Recommended."
+    }
+  ],
+  "footerAbout": "Kumasi's trusted dealer in genuine Apple products — iPhones, iPads, MacBooks, AirPods and Apple Watch. Quality you can count on.",
+  "footerNote": "Made in Kumasi, Ghana 🇬🇭"
+}

@@ -41,10 +41,21 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Check content files (catches typos in content/*.json)
+        run: bun run test
+
       - name: Build
         run: bun run build
         env:
           BASE_PATH: ${{ env.BASE_PATH }}
+
+      - name: Add SPA fallback page
+        run: cp dist/index.html dist/404.html
+
+      - name: Enable and configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

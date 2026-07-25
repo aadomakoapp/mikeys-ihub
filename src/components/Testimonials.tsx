@@ -1,22 +1,5 @@
 import { Star } from "lucide-react";
-
-const reviews = [
-  {
-    name: "Kwame A.",
-    location: "Kumasi",
-    text: "Bought my iPhone 14 Pro from Mikey and it's been flawless for 8 months. The phone was exactly as described and delivery was same-day. Will definitely buy from them again.",
-  },
-  {
-    name: "Adwoa M.",
-    location: "Accra",
-    text: "I was nervous buying online but they sent me video calls of the actual MacBook before I paid. Came in 2 days, perfectly packaged. Genuine sellers.",
-  },
-  {
-    name: "Yaw O.",
-    location: "Takoradi",
-    text: "The AirPods Pro I got from Mikey's iHub are 100% original. Better price than the mall and they even gave me a free case. Recommended.",
-  },
-];
+import { siteText } from "@/content";
 
 export const Testimonials = () => (
   <section className="py-16 md:py-20 surface border-y border-border">
@@ -35,13 +18,14 @@ export const Testimonials = () => (
             ))}
           </div>
           <span className="text-sm text-muted-foreground">
-            <span className="font-semibold text-foreground">4.9</span> from 320+ reviews
+            <span className="font-semibold text-foreground">{siteText.stats.rating}</span>{" "}
+            {siteText.stats.reviewsLine}
           </span>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {reviews.map((r) => (
+        {siteText.testimonials.map((r) => (
           <figure
             key={r.name}
             className="bg-background border border-border rounded-xl p-6 flex flex-col"

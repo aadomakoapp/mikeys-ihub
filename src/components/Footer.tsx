@@ -1,5 +1,6 @@
 import { Logo } from "./Logo";
 import { MessageCircle, Phone, MapPin, Mail, Instagram, Facebook } from "lucide-react";
+import { siteText, store, whatsappLink, telLink } from "@/content";
 
 export const Footer = () => (
   <footer className="bg-foreground text-background">
@@ -8,11 +9,11 @@ export const Footer = () => (
         <div className="col-span-2">
           <Logo variant="light" />
           <p className="text-sm text-background/70 mt-4 max-w-sm leading-relaxed">
-            Kumasi's trusted dealer in genuine Apple products — iPhones, iPads, MacBooks, AirPods and Apple Watch. Quality you can count on.
+            {siteText.footerAbout}
           </p>
           <div className="flex items-center gap-3 mt-5">
             <a
-              href="https://instagram.com"
+              href={store.instagram}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -21,7 +22,7 @@ export const Footer = () => (
               <Instagram className="h-4 w-4" />
             </a>
             <a
-              href="https://facebook.com"
+              href={store.facebook}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -30,7 +31,7 @@ export const Footer = () => (
               <Facebook className="h-4 w-4" />
             </a>
             <a
-              href="https://wa.me/233560965636"
+              href={whatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
@@ -57,23 +58,23 @@ export const Footer = () => (
           <ul className="space-y-3 text-sm text-background/70">
             <li className="flex items-start gap-2">
               <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-              <span>Adum, Melcom · Kumasi</span>
+              <span>{store.addressLine1} · {store.addressLine2}</span>
             </li>
             <li className="flex items-start gap-2">
               <Phone className="h-4 w-4 mt-0.5 flex-shrink-0" />
-              <a href="tel:+233560965636" className="hover:text-background transition-colors">+233 56 096 5636</a>
+              <a href={telLink(store.phones[0])} className="hover:text-background transition-colors">{store.phones[0]}</a>
             </li>
             <li className="flex items-start gap-2">
               <Mail className="h-4 w-4 mt-0.5 flex-shrink-0" />
-              <a href="mailto:hello@mikeysihub.com" className="hover:text-background transition-colors">hello@mikeysihub.com</a>
+              <a href={`mailto:${store.email}`} className="hover:text-background transition-colors">{store.email}</a>
             </li>
           </ul>
         </div>
       </div>
 
       <div className="pt-6 border-t border-background/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-background/60">
-        <p>© {new Date().getFullYear()} Mikey's iHub. All rights reserved.</p>
-        <p>#WePrioritizeQuality · Made in Kumasi, Ghana 🇬🇭</p>
+        <p>© {new Date().getFullYear()} {store.storeName}. All rights reserved.</p>
+        <p>{store.tagline} · {siteText.footerNote}</p>
       </div>
     </div>
   </footer>
