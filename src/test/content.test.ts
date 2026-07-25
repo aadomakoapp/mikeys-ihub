@@ -36,7 +36,10 @@ describe("content/store-info.json", () => {
 describe("content/site-text.json", () => {
   it("has hero, categories, steps and testimonials", () => {
     expect(siteText.hero.headlineStart).toBeTruthy();
-    expect(siteText.hero.image).toBeTruthy();
+    expect(siteText.hero.images.length, "hero needs at least one image").toBeGreaterThan(0);
+    for (const img of siteText.hero.images) {
+      expect(img, "hero images must be file names or https:// links").toBeTruthy();
+    }
     expect(siteText.categories.length).toBeGreaterThan(0);
     expect(siteText.howItWorks.length).toBeGreaterThan(0);
     expect(siteText.testimonials.length).toBeGreaterThan(0);

@@ -11,7 +11,7 @@ rebuilds itself and goes live automatically in about **2 minutes**.
 |---|---|
 | Products, prices, storage options, product photos | [`content/inventory.json`](content/inventory.json) |
 | Phone numbers, WhatsApp, email, address, opening hours, social media links | [`content/store-info.json`](content/store-info.json) |
-| Headline, categories, customer reviews, ratings, wording | [`content/site-text.json`](content/site-text.json) |
+| Headline, front-page picture carousel, categories, customer reviews, ratings | [`content/site-text.json`](content/site-text.json) |
 | Photos (upload new ones here) | [`public/images/`](public/images) folder |
 
 ---
@@ -90,6 +90,11 @@ The name must match exactly, including `.jpg`/`.png` and capital letters.
 Any link that starts with `https://` is used as-is.
 
 Square-ish photos on a plain background look best on the product cards.
+
+**The rotating pictures on the front page** come from the `"images"` list under
+`"hero"` in `content/site-text.json`. Same rules: each entry is either a file
+name from `public/images` or a full `https://` link. Add, remove or reorder
+lines to change the carousel.
 
 ## 5. Changing phone numbers, hours, address
 

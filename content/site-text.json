@@ -5,7 +5,13 @@
     "headlineHighlight": "iDeals",
     "headlineEnd": "on genuine Apple products.",
     "subheadline": "Mikey's iHub is Kumasi's trusted dealer in iPhones, iPads, MacBooks, AirPods and Apple Watch — quality, durable and affordable, every time.",
-    "image": "hero-iphones.jpg"
+    "images": [
+      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-max-naturaltitanium-select?wid=1200&hei=1200&fmt=png-alpha",
+      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-plus-red-select-202209?wid=1200&hei=1200&fmt=png-alpha",
+      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-select-wifi-spacegray-202203?wid=1200&hei=1200&fmt=png-alpha",
+      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-silver-select-20220606?wid=1200&hei=1200&fmt=png-alpha",
+      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MV7N2?wid=1200&hei=1200&fmt=png-alpha"
+    ]
   },
   "stats": {
     "rating": "4.9",

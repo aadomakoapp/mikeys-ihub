@@ -1,6 +1,7 @@
 import { ArrowRight, MessageCircle, ShieldCheck, Star } from "lucide-react";
 import { Button } from "./ui/button";
-import { siteText, store, imageUrl, whatsappLink } from "@/content";
+import { HeroCarousel } from "./HeroCarousel";
+import { siteText, store, whatsappLink } from "@/content";
 
 export const Hero = () => {
   const { hero, stats } = siteText;
@@ -55,15 +56,7 @@ export const Hero = () => {
           </div>
 
           <div className="relative order-first lg:order-last">
-            <div className="aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden bg-background">
-              <img
-                src={imageUrl(hero.image)}
-                alt={`iPhone available at ${store.storeName}`}
-                width={1600}
-                height={1280}
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <HeroCarousel />
           </div>
         </div>
       </div>
