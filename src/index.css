@@ -42,7 +42,7 @@
 
     --border: 214 20% 89%;
     --input: 214 20% 89%;
-    --ring: 217 91% 45%;
+    --ring: 0 84% 50%;
 
     --radius: 0.625rem;
 
@@ -52,12 +52,12 @@
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 217 91% 45%;
+    --sidebar-primary: 0 84% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 210 20% 96%;
     --sidebar-accent-foreground: 222 47% 11%;
     --sidebar-border: 214 20% 89%;
-    --sidebar-ring: 217 91% 45%;
+    --sidebar-ring: 0 84% 50%;
   }
 }
 
