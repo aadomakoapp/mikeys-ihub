@@ -2,7 +2,7 @@
 
 **Live website:** https://aadomakoapp.github.io/sell-my-shiny-phone/
 
-You don't need to install anything or know how to code. Everything you'd normally
+You don't need to install anything. Everything you'd normally
 want to change lives in **3 small files** and **1 photo folder**, and you edit them
 right here on the GitHub website. Every time you save a change, the website
 rebuilds itself and goes live automatically in about **2 minutes**.
