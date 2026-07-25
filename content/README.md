@@ -11,4 +11,4 @@ Photos go in the [`public/images`](../public/images) folder.
 **Full step-by-step instructions: [HOW-TO-UPDATE.md](../HOW-TO-UPDATE.md)**
 
 Save a change (Commit) and the live site updates itself in about 2 minutes:
-https://aadomakoapp.github.io/sell-my-shiny-phone/
+https://aadomakoapp.github.io/mikeys-ihub/

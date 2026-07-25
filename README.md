@@ -3,7 +3,7 @@
 Storefront website for **Mikey's iHub**, dealer in iPhones, iPads, MacBooks,
 AirPods and Apple Watch in Adum, Kumasi, Ghana.
 
-**Live site:** https://aadomakoapp.github.io/sell-my-shiny-phone/
+**Live site:** https://aadomakoapp.github.io/mikeys-ihub/
 
 ## ✏️ Updating the site (no coding needed)
 

@@ -1,6 +1,6 @@
 # How to update the Mikey's iHub website
 
-**Live website:** https://aadomakoapp.github.io/sell-my-shiny-phone/
+**Live website:** https://aadomakoapp.github.io/mikeys-ihub/
 
 You don't need to install anything. Everything you'd normally
 want to change lives in **3 small files** and **1 photo folder**, and you edit them
