@@ -10,20 +10,21 @@ export const Hero = () => {
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-8 items-center py-12 md:py-20">
           <div className="animate-fade-up">
-            <div className="inline-flex items-center gap-2 bg-background border border-border rounded-full px-3 py-1 mb-6 text-xs font-medium text-muted-foreground">
+            <div className="inline-flex items-center gap-2 bg-foreground text-background rounded-full px-3 py-1 mb-6 text-xs font-bold tracking-wide">
               <ShieldCheck className="h-3.5 w-3.5 text-primary" />
-              100% inspected · 7-day return policy
+              #WePrioritizeQuality
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] mb-5">
-              Genuine Apple products.
+              Quality <span className="text-primary">iDeals</span>
               <br />
-              <span className="text-primary">Honest prices.</span>
+              on genuine Apple products.
             </h1>
 
             <p className="text-base md:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed">
-              Mikey's iHub is Kumasi's trusted dealer in iPhones, iPads, MacBooks, AirPods and Apple Watch — every device tested and backed by our quality promise.
+              Mikey's iHub is Kumasi's trusted dealer in iPhones, iPads, MacBooks, AirPods and Apple Watch — quality, durable and affordable, every time.
             </p>
+
 
             <div className="flex flex-col sm:flex-row gap-3 mb-8">
               <Button size="xl" asChild>
