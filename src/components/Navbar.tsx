@@ -14,8 +14,21 @@ const links = [
 
 const WHATSAPP = whatsappLink();
 
-export const Navbar = () => {
+interface NavbarProps {
+  query: string;
+  onQueryChange: (query: string) => void;
+}
+
+export const Navbar = ({ query, onQueryChange }: NavbarProps) => {
   const [open, setOpen] = useState(false);
+
+  const handleSearch = (value: string) => {
+    // jump to the stock grid when a search starts so results are visible
+    if (value && !query) {
+      document.getElementById("featured")?.scrollIntoView?.({ behavior: "smooth" });
+    }
+    onQueryChange(value);
+  };
 
   return (
     <header className="sticky top-0 inset-x-0 z-50 bg-background border-b border-border">
@@ -44,6 +57,8 @@ export const Navbar = () => {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <input
                 type="search"
+                value={query}
+                onChange={(e) => handleSearch(e.target.value)}
                 placeholder="Search iPhone, MacBook, AirPods…"
                 className="w-full h-10 pl-10 pr-4 rounded-md surface border border-border text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent placeholder:text-muted-foreground"
               />
@@ -81,6 +96,8 @@ export const Navbar = () => {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <input
                 type="search"
+                value={query}
+                onChange={(e) => handleSearch(e.target.value)}
                 placeholder="Search products…"
                 className="w-full h-10 pl-10 pr-4 rounded-md surface border border-border text-sm"
               />
