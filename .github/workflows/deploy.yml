@@ -1,4 +1,9 @@
-name: Deploy to GitHub Pages
+name: Deploy
+
+# Every push to main publishes the site to both places:
+#   - mikeysihub.com          (Cloudflare Workers — the real site)
+#   - GitHub Pages            (backup mirror on the github.io subpath)
+# Tests run once, first. If a content file has a typo, neither deploy happens.
 
 on:
   push:
@@ -11,12 +16,84 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "deploy-${{ github.ref }}"
   cancel-in-progress: false
 
 jobs:
-  build:
+  # ---------------------------------------------------------------- test gate
+  test:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Check content files (catches typos in content/*.json)
+        run: bun run test
+
+  # ------------------------------------------------- mikeysihub.com (primary)
+  cloudflare:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      # The deploy needs a Cloudflare API token in repo secrets. Without one,
+      # skip the job with a warning instead of failing the whole run.
+      - name: Check for Cloudflare credentials
+        id: check
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -n "$CF_TOKEN" ] && [ -n "$CF_ACCOUNT" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID not set — skipping the mikeysihub.com deploy. See HOW-TO-UPDATE.md."
+          fi
+
+      - name: Checkout
+        if: steps.check.outputs.ready == 'true'
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        if: steps.check.outputs.ready == 'true'
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        if: steps.check.outputs.ready == 'true'
+        run: bun install
+
+      # BASE_PATH=/ because the site lives at the root of mikeysihub.com,
+      # not on the /mikeys-ihub/ subpath that GitHub Pages uses.
+      - name: Build
+        if: steps.check.outputs.ready == 'true'
+        run: bun run build:cf
+
+      - name: Publish to Cloudflare
+        if: steps.check.outputs.ready == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.114.0"
+          command: deploy
+
+  # ------------------------------------------------- GitHub Pages (mirror)
+  pages:
+    needs: test
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,9 +118,6 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Check content files (catches typos in content/*.json)
-        run: bun run test
-
       - name: Build
         run: bun run build
         env:
@@ -62,13 +136,6 @@ jobs:
         with:
           path: './dist'
 
-  deploy:
-    needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
