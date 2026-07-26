@@ -13,7 +13,6 @@ describe("content/inventory.json", () => {
     (_name, p) => {
       expect(p.name, "every product needs a name").toBeTruthy();
       expect(p.color, `${p.name}: needs a color`).toBeTruthy();
-      expect(p.price, `${p.name}: needs a price`).toBeTruthy();
       expect(p.condition, `${p.name}: needs a condition (e.g. Brand New, UK Used)`).toBeTruthy();
       expect(p.image, `${p.name}: needs an image (file name in public/images or https:// link)`).toBeTruthy();
       expect(Array.isArray(p.storage), `${p.name}: storage must be a list like ["128GB", "256GB"]`).toBe(true);

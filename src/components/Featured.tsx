@@ -59,13 +59,12 @@ export const Featured = () => {
                   ))}
                 </div>
 
-                <div className="mt-auto flex items-end justify-between gap-3 pt-3 border-t border-border">
-                  <div>
-                    <p className="text-[11px] text-muted-foreground uppercase tracking-wide">From</p>
-                    <p className="text-lg font-bold leading-tight">
-                      {store.currency} {p.price}
-                    </p>
-                  </div>
+                <div className="mt-auto flex items-center justify-between gap-3 pt-3 border-t border-border">
+                  <p className="text-xs text-muted-foreground leading-snug">
+                    Message us for
+                    <br />
+                    today's best price
+                  </p>
                   <Button variant="whatsapp" size="sm" asChild>
                     <a
                       href={whatsappLink(`${store.whatsappOrderPrefix}${p.name}`)}

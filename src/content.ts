@@ -7,7 +7,8 @@ export interface Product {
   color: string;
   storage: string[];
   condition: string;
-  price: string;
+  /** Optional and no longer shown on the site — customers ask on WhatsApp */
+  price?: string;
   image: string;
 }
 

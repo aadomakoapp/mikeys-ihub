@@ -1,12 +1,11 @@
 {
-  "HOW_TO_EDIT": "This file is the product list shown on the website. Copy an existing product block to add a new one, edit prices/names freely, and delete a block to remove a product. 'image' can be a photo file name uploaded to the public/images folder (e.g. my-phone.jpg) OR a full internet link starting with https://. Full instructions: see HOW-TO-UPDATE.md in the main folder.",
+  "HOW_TO_EDIT": "This file is the product list shown on the website. Copy an existing product block to add a new one, edit names freely, and delete a block to remove a product. Prices are NOT shown on the website — customers tap Order and ask on WhatsApp. 'image' can be a photo file name uploaded to the public/images folder (e.g. my-phone.jpg) OR a full internet link starting with https://. Full instructions: see HOW-TO-UPDATE.md in the main folder.",
   "products": [
     {
       "name": "iPhone 15 Pro Max",
       "color": "Natural Titanium",
       "storage": ["256GB", "512GB", "1TB"],
       "condition": "Brand New",
-      "price": "12,500",
       "image": "iphone-titanium.png"
     },
     {
@@ -14,7 +13,6 @@
       "color": "Product (RED)",
       "storage": ["128GB", "256GB"],
       "condition": "UK Used",
-      "price": "7,200",
       "image": "iphone-red.png"
     },
     {
@@ -22,7 +20,6 @@
       "color": "Sierra Blue",
       "storage": ["128GB", "256GB"],
       "condition": "UK Used",
-      "price": "5,800",
       "image": "iphone-blue.png"
     },
     {
@@ -30,7 +27,6 @@
       "color": "Space Gray",
       "storage": ["64GB", "256GB"],
       "condition": "Brand New",
-      "price": "6,400",
       "image": "ipad.png"
     },
     {
@@ -38,7 +34,6 @@
       "color": "Silver",
       "storage": ["256GB SSD", "512GB SSD"],
       "condition": "Brand New",
-      "price": "14,900",
       "image": "macbook.png"
     },
     {
@@ -46,7 +41,6 @@
       "color": "White",
       "storage": ["With Charging Case"],
       "condition": "Brand New",
-      "price": "850",
       "image": "airpods.png"
     }
   ]

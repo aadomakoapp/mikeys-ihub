@@ -9,7 +9,7 @@ rebuilds itself and goes live automatically in about **2 minutes**.
 
 | I want to change… | Edit this |
 |---|---|
-| Products, prices, storage options, product photos | [`content/inventory.json`](content/inventory.json) |
+| Products, storage options, product photos | [`content/inventory.json`](content/inventory.json) |
 | Phone numbers, WhatsApp, email, address, opening hours, social media links | [`content/store-info.json`](content/store-info.json) |
 | Headline, front-page picture carousel, categories, customer reviews, ratings | [`content/site-text.json`](content/site-text.json) |
 | Photos (upload new ones here) | [`public/images/`](public/images) folder |
@@ -24,26 +24,12 @@ rebuilds itself and goes live automatically in about **2 minutes**.
 4. Click the green **Commit changes…** button, then **Commit changes** again.
 5. Done. Wait ~2 minutes and refresh the live site.
 
----
-
-## 2. Changing a price
-
-Open `content/inventory.json`, find the product, and change the number:
-
-```json
-"price": "12,500",
-```
-
-becomes
-
-```json
-"price": "11,900",
-```
-
 **Golden rule:** only change what's between the quotation marks. Keep the
 quotes `"` and the commas `,` exactly as they are.
 
-## 3. Adding a new product
+---
+
+## 2. Adding a new product
 
 In `content/inventory.json`, copy an existing product block — everything from `{` to `},` —
 and paste it below, then edit the details:
@@ -54,19 +40,22 @@ and paste it below, then edit the details:
   "color": "Desert Titanium",
   "storage": ["256GB", "512GB"],
   "condition": "Brand New",
-  "price": "16,000",
   "image": "iphone-16-pro.jpg"
 },
 ```
 
 Notes:
 
+- **Prices are not shown on the website.** Each product card says
+  *"Message us for today's best price"* and customers tap **Order** to ask on
+  WhatsApp — so you never need to update the site when prices change.
+
 - `condition` — anything containing the word "New" gets a **green** badge
   (e.g. "Brand New"). Anything else (e.g. "UK Used") gets an **orange** badge.
 - Every product block ends with `},` **except the last one**, which ends with `}` (no comma).
 - To **remove** a product, delete its whole block from `{` to `},`.
 
-## 4. Product photos — two ways
+## 3. Product photos — two ways
 
 **Option A — upload a photo (recommended):**
 
@@ -96,7 +85,7 @@ Square-ish photos on a plain background look best on the product cards.
 name from `public/images` or a full `https://` link. Add, remove or reorder
 lines to change the carousel.
 
-## 5. Changing phone numbers, hours, address
+## 4. Changing phone numbers, hours, address
 
 Open `content/store-info.json`. Everything is labelled. Two things to know:
 
@@ -104,7 +93,7 @@ Open `content/store-info.json`. Everything is labelled. Two things to know:
   `"whatsappNumber": "233560965636"`
 - `phones` are display numbers — write them however you want them to look on the site.
 
-## 6. Customer reviews — from email to website
+## 5. Customer reviews — from email to website
 
 Visitors can fill in the **"Leave a review"** form on the website. **Nothing
 they type goes live by itself.** Instead, every review is emailed to you, and
@@ -145,7 +134,7 @@ Things to know:
 - Reviews show in the order they're listed — paste new ones at the **top**
   so the newest shows first.
 - Every review block ends with `},` **except the last one**, which ends with
-  `}` (no comma). This is the most common typo — see section 7 if the site
+  `}` (no comma). This is the most common typo — see section 6 if the site
   doesn't update.
 - `"rating"` is optional — leave it out and the review shows 5 stars.
   Write `"rating": 4` to show 4 filled stars, and so on.
@@ -157,7 +146,7 @@ that one click, every review lands straight in your inbox. (If you change the
 `"email"` in `store-info.json` later, you'll get a new activation email the
 first time the new address is used.)
 
-## 7. If something goes wrong
+## 6. If something goes wrong
 
 The site is protected: if you save a file with a typo (usually a missing comma
 or quotation mark), the **live site stays as it was** — your broken change simply
