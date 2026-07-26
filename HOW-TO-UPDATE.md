@@ -6,10 +6,10 @@ You don't need to install anything. Everything you'd normally
 want to change lives in **3 small files** and **1 photo folder**, and you edit them
 right here on the GitHub website.
 
-⚠️ **Important:** saving a change here does **not** put it on
-mikeysihub.com by itself. Someone has to run one command afterwards to publish
-it — see [section 6](#6-publishing-your-changes-to-mikeysihubcom). Until that
-happens, mikeysihub.com keeps showing the old version.
+✅ **Your changes publish themselves.** A minute or two after you save a change
+here, mikeysihub.com updates on its own — no command to run, nothing to
+install. [Section 6](#6-publishing-your-changes-to-mikeysihubcom) explains how
+to watch it happen and what to do on the rare occasion it doesn't.
 
 | I want to change… | Edit this |
 |---|---|
@@ -26,8 +26,8 @@ happens, mikeysihub.com keeps showing the old version.
 2. Click the **pencil icon** (✏️) at the top-right of the file.
 3. Make your change.
 4. Click the green **Commit changes…** button, then **Commit changes** again.
-5. Your change is saved. To get it onto mikeysihub.com, do
-   [section 6](#6-publishing-your-changes-to-mikeysihubcom).
+5. Your change is saved, and mikeysihub.com updates itself about **2 minutes**
+   later. Nothing else to do.
 
 **Golden rule:** only change what's between the quotation marks. Keep the
 quotes `"` and the commas `,` exactly as they are.
@@ -131,9 +131,8 @@ block with the details from the email. Copy an existing block as your template:
 ]
 ```
 
-**Step 5 — Click the green "Commit changes" button** (twice). Then publish it
-with [section 6](#6-publishing-your-changes-to-mikeysihubcom) — after that the
-review is live for everyone to see.
+**Step 5 — Click the green "Commit changes" button** (twice). About 2 minutes
+later the review is live for everyone to see.
 
 Things to know:
 
@@ -154,47 +153,42 @@ first time the new address is used.)
 
 ## 6. Publishing your changes to mikeysihub.com
 
-The website lives on **Cloudflare**, and mikeysihub.com only changes when
-somebody publishes it. This is one command, run on a computer that has the
-project — usually your developer's.
+**You don't have to do anything.** Every time you commit a change on GitHub,
+the site rebuilds and publishes itself to mikeysihub.com. It takes about
+**2 minutes** from the moment you click *Commit changes*.
 
-**On a computer with the project folder open in a terminal:**
+**To watch it happen:** click the **Actions** tab at the top of this page. Your
+change is the run at the top of the list.
 
-```bash
-npm run deploy
-```
-
-That's it. It rebuilds the site with your latest edits and pushes it to
-Cloudflare. It takes about **30 seconds**, and mikeysihub.com is updated the
-moment it finishes.
+- 🟡 Yellow dot — still publishing, give it a minute.
+- ✅ Green tick — **it's live.** Open mikeysihub.com and refresh.
+- ❌ Red X — your edit has a typo and was **not** published. See section 7.
 
 Notes:
 
-- If the edits were made on the GitHub website (the normal way, section 1),
-  run `git pull` first so the computer has them:
-
-  ```bash
-  git pull
-  npm run deploy
-  ```
-
-- The very first time on a new computer, you must log in to Cloudflare once:
-
-  ```bash
-  npx wrangler login
-  ```
-
-  A browser opens — sign in with the **adomakoaugustine659@gmail.com** account
-  (the one that owns mikeysihub.com) and click **Allow**. You only do this once
-  per computer.
-
 - Both `mikeysihub.com` and `www.mikeysihub.com` update together.
+- If the site looks unchanged after a green tick, your phone or laptop is
+  showing a saved copy. Pull down to refresh, or open it in a private window.
 
 **There is also a backup copy of the site** at
-https://aadomakoapp.github.io/mikeys-ihub/. That one *does* update by itself
-about 2 minutes after every commit — no command needed. It is kept working on
-purpose, so if mikeysihub.com is ever down you still have a website to send
-customers to. The address customers should use is always **mikeysihub.com**.
+https://aadomakoapp.github.io/mikeys-ihub/, published at the same time from the
+same edit. It is kept working on purpose, so if mikeysihub.com is ever down you
+still have a website to send customers to. The address customers should use is
+always **mikeysihub.com**.
+
+### Publishing by hand (only if the automatic publish is broken)
+
+On a computer with the project folder open in a terminal:
+
+```bash
+git pull
+npm run deploy
+```
+
+The very first time on a new computer, log in to Cloudflare once with
+`npx wrangler login` — a browser opens, sign in with the
+**adomakoaugustine659@gmail.com** account (the one that owns mikeysihub.com)
+and click **Allow**.
 
 ## 7. If something goes wrong
 
@@ -205,15 +199,15 @@ doesn't go live.
 To check your edit for typos, open the **Actions** tab at the top of this page
 and look at the run for your commit:
 
-- ✅ Green tick — your edit is good. It still needs publishing (section 6).
-- ❌ Red X — your last edit has a typo. Open the file again and check the spot
-  you edited: is there a missing `,` between items? A missing `"`? Fix it and
-  commit again.
+- ✅ Green tick — your edit is good and is now live on mikeysihub.com.
+- ❌ Red X — your last edit has a typo, and **nothing was published**. Open the
+  file again and check the spot you edited: is there a missing `,` between
+  items? A missing `"`? Fix it and commit again — the next green tick publishes
+  everything.
 
-If `npm run deploy` stops with an error instead of finishing, the same thing is
-usually the cause — a typo in one of the `content/*.json` files. mikeysihub.com
-is untouched until a publish succeeds, so a failed publish never breaks the
-live site.
+The typo check runs *before* either site is touched, so a bad edit can never
+reach mikeysihub.com. The live site simply keeps showing the last good version
+until you fix it.
 
 You can always compare against this guide's examples, or view the file's
 **History** (clock icon on the file page) to see exactly what changed and undo it.
