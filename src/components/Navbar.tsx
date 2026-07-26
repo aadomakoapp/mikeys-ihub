@@ -8,6 +8,7 @@ const links = [
   { href: "#products", label: "Shop" },
   { href: "#featured", label: "iPhones" },
   { href: "#how-it-works", label: "How it works" },
+  { href: "#reviews", label: "Reviews" },
   { href: "#visit", label: "Contact" },
 ];
 

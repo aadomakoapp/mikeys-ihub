@@ -104,7 +104,60 @@ Open `content/store-info.json`. Everything is labelled. Two things to know:
   `"whatsappNumber": "233560965636"`
 - `phones` are display numbers — write them however you want them to look on the site.
 
-## 6. If something goes wrong
+## 6. Customer reviews — from email to website
+
+Visitors can fill in the **"Leave a review"** form on the website. **Nothing
+they type goes live by itself.** Instead, every review is emailed to you, and
+*you* decide which ones get published. Here is the whole process:
+
+**Step 1 — The review arrives in your email.** Each submission comes to the
+address in `content/store-info.json` (`"email"`) with the subject
+*"New website review for Mikey's iHub"*, showing the customer's name, town,
+star rating and message. (Check Spam the first few times and mark it
+**"Not spam"** so future ones reach your inbox.)
+
+**Step 2 — Decide.** Spam or fake? Just **delete the email** — it will never
+touch the website. Good review? Continue:
+
+**Step 3 — Open [`content/site-text.json`](content/site-text.json)** and click
+the **pencil icon** (✏️) to edit.
+
+**Step 4 — Publish it.** Find the `"testimonials"` list and paste in a new
+block with the details from the email. Copy an existing block as your template:
+
+```json
+"testimonials": [
+  {
+    "name": "Ama B.",
+    "location": "Kumasi",
+    "text": "Great phone, fast delivery!",
+    "rating": 5
+  },
+  { ...the reviews that were already there... }
+]
+```
+
+**Step 5 — Click the green "Commit changes" button** (twice). Wait ~2 minutes,
+refresh the website — the review is now live for everyone to see.
+
+Things to know:
+
+- Reviews show in the order they're listed — paste new ones at the **top**
+  so the newest shows first.
+- Every review block ends with `},` **except the last one**, which ends with
+  `}` (no comma). This is the most common typo — see section 7 if the site
+  doesn't update.
+- `"rating"` is optional — leave it out and the review shows 5 stars.
+  Write `"rating": 4` to show 4 filled stars, and so on.
+
+**One-time setup:** the form is powered by a free service called
+[FormSubmit](https://formsubmit.co). The **first time** someone sends a review,
+FormSubmit emails you a confirmation — open it and click **Activate**. After
+that one click, every review lands straight in your inbox. (If you change the
+`"email"` in `store-info.json` later, you'll get a new activation email the
+first time the new address is used.)
+
+## 7. If something goes wrong
 
 The site is protected: if you save a file with a typo (usually a missing comma
 or quotation mark), the **live site stays as it was** — your broken change simply

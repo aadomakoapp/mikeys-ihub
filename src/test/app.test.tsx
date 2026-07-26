@@ -15,5 +15,7 @@ describe("site smoke test", () => {
     // contact details from content/store-info.json show up
     expect(screen.getAllByText(store.phones[0]).length).toBeGreaterThan(0);
     expect(screen.getAllByText(store.email).length).toBeGreaterThan(0);
+    // the "leave a review" form is on the page
+    expect(screen.getByRole("button", { name: /send review/i })).toBeInTheDocument();
   });
 });

@@ -11,9 +11,18 @@ export interface Product {
   image: string;
 }
 
+export interface Review {
+  name: string;
+  location?: string;
+  text: string;
+  /** 1–5 stars; omit for 5 */
+  rating?: number;
+}
+
 export const products: Product[] = inventoryJson.products;
 export const store = storeInfoJson;
 export const siteText = siteTextJson;
+export const reviews: Review[] = siteTextJson.testimonials;
 
 /**
  * Images in the content files can be either a bare file name
