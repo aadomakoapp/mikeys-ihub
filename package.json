@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
+    "build:cf": "BASE_PATH=/ vite build",
+    "deploy": "npm run test && npm run build:cf && npx wrangler deploy",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",

@@ -3,13 +3,15 @@
 Storefront website for **Mikey's iHub**, dealer in iPhones, iPads, MacBooks,
 AirPods and Apple Watch in Adum, Kumasi, Ghana.
 
-**Live site:** https://aadomakoapp.github.io/mikeys-ihub/
+**Live site:** https://mikeysihub.com
+(backup mirror: https://aadomakoapp.github.io/mikeys-ihub/)
 
 ## ✏️ Updating the site (no coding needed)
 
 All products, prices, photos, contact details and wording live in the
 [`content/`](content) folder and the [`public/images/`](public/images) photo folder.
-Edit them directly on GitHub and the site redeploys itself automatically.
+Edit them directly on GitHub, then run `npm run deploy` to publish to
+mikeysihub.com (the GitHub Pages mirror updates on its own).
 
 **➡️ Read the step-by-step guide: [HOW-TO-UPDATE.md](HOW-TO-UPDATE.md)**
 
@@ -22,6 +24,7 @@ npm install
 npm run dev        # local dev server on http://localhost:8080
 npm test           # validates content/*.json + unit tests
 npm run build      # production build (set BASE_PATH for subpath hosting)
+npm run deploy     # test + build with BASE_PATH=/ + publish to Cloudflare
 ```
 
 - Site content is imported from `content/*.json` via `src/content.ts` — components

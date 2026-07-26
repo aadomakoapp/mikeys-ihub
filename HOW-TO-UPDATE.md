@@ -1,11 +1,15 @@
 # How to update the Mikey's iHub website
 
-**Live website:** https://aadomakoapp.github.io/mikeys-ihub/
+**Live website:** https://mikeysihub.com
 
 You don't need to install anything. Everything you'd normally
 want to change lives in **3 small files** and **1 photo folder**, and you edit them
-right here on the GitHub website. Every time you save a change, the website
-rebuilds itself and goes live automatically in about **2 minutes**.
+right here on the GitHub website.
+
+⚠️ **Important:** saving a change here does **not** put it on
+mikeysihub.com by itself. Someone has to run one command afterwards to publish
+it — see [section 6](#6-publishing-your-changes-to-mikeysihubcom). Until that
+happens, mikeysihub.com keeps showing the old version.
 
 | I want to change… | Edit this |
 |---|---|
@@ -22,7 +26,8 @@ rebuilds itself and goes live automatically in about **2 minutes**.
 2. Click the **pencil icon** (✏️) at the top-right of the file.
 3. Make your change.
 4. Click the green **Commit changes…** button, then **Commit changes** again.
-5. Done. Wait ~2 minutes and refresh the live site.
+5. Your change is saved. To get it onto mikeysihub.com, do
+   [section 6](#6-publishing-your-changes-to-mikeysihubcom).
 
 **Golden rule:** only change what's between the quotation marks. Keep the
 quotes `"` and the commas `,` exactly as they are.
@@ -126,15 +131,16 @@ block with the details from the email. Copy an existing block as your template:
 ]
 ```
 
-**Step 5 — Click the green "Commit changes" button** (twice). Wait ~2 minutes,
-refresh the website — the review is now live for everyone to see.
+**Step 5 — Click the green "Commit changes" button** (twice). Then publish it
+with [section 6](#6-publishing-your-changes-to-mikeysihubcom) — after that the
+review is live for everyone to see.
 
 Things to know:
 
 - Reviews show in the order they're listed — paste new ones at the **top**
   so the newest shows first.
 - Every review block ends with `},` **except the last one**, which ends with
-  `}` (no comma). This is the most common typo — see section 6 if the site
+  `}` (no comma). This is the most common typo — see section 7 if the site
   doesn't update.
 - `"rating"` is optional — leave it out and the review shows 5 stars.
   Write `"rating": 4` to show 4 filled stars, and so on.
@@ -146,18 +152,68 @@ that one click, every review lands straight in your inbox. (If you change the
 `"email"` in `store-info.json` later, you'll get a new activation email the
 first time the new address is used.)
 
-## 6. If something goes wrong
+## 6. Publishing your changes to mikeysihub.com
+
+The website lives on **Cloudflare**, and mikeysihub.com only changes when
+somebody publishes it. This is one command, run on a computer that has the
+project — usually your developer's.
+
+**On a computer with the project folder open in a terminal:**
+
+```bash
+npm run deploy
+```
+
+That's it. It rebuilds the site with your latest edits and pushes it to
+Cloudflare. It takes about **30 seconds**, and mikeysihub.com is updated the
+moment it finishes.
+
+Notes:
+
+- If the edits were made on the GitHub website (the normal way, section 1),
+  run `git pull` first so the computer has them:
+
+  ```bash
+  git pull
+  npm run deploy
+  ```
+
+- The very first time on a new computer, you must log in to Cloudflare once:
+
+  ```bash
+  npx wrangler login
+  ```
+
+  A browser opens — sign in with the **adomakoaugustine659@gmail.com** account
+  (the one that owns mikeysihub.com) and click **Allow**. You only do this once
+  per computer.
+
+- Both `mikeysihub.com` and `www.mikeysihub.com` update together.
+
+**There is also a backup copy of the site** at
+https://aadomakoapp.github.io/mikeys-ihub/. That one *does* update by itself
+about 2 minutes after every commit — no command needed. It is kept working on
+purpose, so if mikeysihub.com is ever down you still have a website to send
+customers to. The address customers should use is always **mikeysihub.com**.
+
+## 7. If something goes wrong
 
 The site is protected: if you save a file with a typo (usually a missing comma
 or quotation mark), the **live site stays as it was** — your broken change simply
 doesn't go live.
 
-To see what happened, open the **Actions** tab at the top of this page:
+To check your edit for typos, open the **Actions** tab at the top of this page
+and look at the run for your commit:
 
-- ✅ Green tick — your change is live.
+- ✅ Green tick — your edit is good. It still needs publishing (section 6).
 - ❌ Red X — your last edit has a typo. Open the file again and check the spot
   you edited: is there a missing `,` between items? A missing `"`? Fix it and
   commit again.
+
+If `npm run deploy` stops with an error instead of finishing, the same thing is
+usually the cause — a typo in one of the `content/*.json` files. mikeysihub.com
+is untouched until a publish succeeds, so a failed publish never breaks the
+live site.
 
 You can always compare against this guide's examples, or view the file's
 **History** (clock icon on the file page) to see exactly what changed and undo it.
