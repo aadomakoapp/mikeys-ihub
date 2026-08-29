@@ -95,7 +95,7 @@ lines to change the carousel.
 Open `content/store-info.json`. Everything is labelled. Two things to know:
 
 - `whatsappNumber` is **digits only, starting with the country code**, no `+` and no spaces:
-  `"whatsappNumber": "233560965636"`
+  `"whatsappNumber": "233559631051"`
 - `phones` are display numbers — write them however you want them to look on the site.
 
 ## 5. Customer reviews — from email to website
